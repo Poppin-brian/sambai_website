@@ -4,11 +4,21 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-change-this-key-before-deployment"
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "unsafe-local-dev-secret-key-change-before-production",
+)
 
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get(
+        "DJANGO_ALLOWED_HOSTS",
+        "127.0.0.1,localhost",
+    ).split(",")
+    if host.strip()
+]
 
 
 INSTALLED_APPS = [
@@ -93,7 +103,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get("HIVE_EMAIL_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("HIVE_EMAIL_PASSWORD")
+EMAIL_HOST_USER = os.environ.get("HIVE_EMAIL_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("HIVE_EMAIL_PASSWORD", "")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 HIVE_INQUIRY_EMAIL = "kiplangatsambai1997@gmail.com"
