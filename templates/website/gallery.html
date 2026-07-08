@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Gallery | The Hive{% endblock %}
+{% block meta_description %}View photos of The Hive, including outdoor spaces, dining areas, guest spaces, and hospitality moments in Belgut, Sosiot.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <p class="eyebrow">Gallery</p>
+    <h1>A short look at The Hive.</h1>
+</section>
+
+<section class="section">
+    <div class="gallery-grid">
+        <button class="gallery-card lightbox-trigger" type="button" data-full="{% static 'images/hive-outdoor-veranda.jpg' %}" data-caption="Outdoor sitting area at The Hive">
+            <img src="{% static 'images/hive-outdoor-veranda.jpg' %}" alt="Outdoor sitting area at The Hive" loading="lazy">
+            <span>Outdoor sitting area</span>
+        </button>
+        <button class="gallery-card lightbox-trigger" type="button" data-full="{% static 'images/hive-garden-view.jpg' %}" data-caption="Garden view at The Hive">
+            <img src="{% static 'images/hive-garden-view.jpg' %}" alt="Garden view at The Hive" loading="lazy">
+            <span>Garden view</span>
+        </button>
+        <button class="gallery-card lightbox-trigger" type="button" data-full="{% static 'images/hive-outdoor-compound.jpg' %}" data-caption="Outdoor compound at The Hive">
+            <img src="{% static 'images/hive-outdoor-compound.jpg' %}" alt="Outdoor compound at The Hive" loading="lazy">
+            <span>Outdoor compound</span>
+        </button>
+    </div>
+</section>
+
+<div class="lightbox" aria-hidden="true">
+    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Gallery preview">
+        <button class="lightbox-close" type="button" aria-label="Close gallery preview">Close</button>
+        <img class="lightbox-image" src="" alt="">
+        <p class="lightbox-caption"></p>
+    </div>
+</div>
+{% endblock %}

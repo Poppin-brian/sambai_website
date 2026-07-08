@@ -1,0 +1,53 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Restaurant &amp; Bar | The Hive{% endblock %}
+{% block meta_description %}Enjoy dining, beverages, and relaxed social moments at The Hive Resort &amp; Bar in Belgut, Sosiot.{% endblock %}
+
+{% block content %}
+<section class="hero" aria-label="Restaurant and bar at The Hive">
+    <img class="hero-image" src="{% static 'images/restaurant-bar-hero.jpg' %}" alt="Restaurant and bar lounge seating at The Hive">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="eyebrow">The Hive</p>
+        <h1>Restaurant &amp; Bar</h1>
+        <p class="hero-description">Fresh meals, refreshing beverages, and relaxed social moments at The Hive.</p>
+        <div class="hero-actions">
+            <a class="button primary" href="{% url 'contact' %}#inquiry">Make an Inquiry</a>
+            <a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road" target="_blank" rel="noopener noreferrer">Get Directions</a>
+        </div>
+    </div>
+</section>
+
+<section class="section intro-section centered-section">
+    <p>Enjoy a calm indoor setting for meals, casual conversations, and relaxed moments with friends, family, or guests.</p>
+</section>
+
+<section class="section content-section">
+    <div>
+        <p class="eyebrow">Restaurant</p>
+        <h2>Dining &amp; Lounge</h2>
+        <p>Settle into a welcoming space designed for casual dining, light meals, conversations, and relaxed hospitality.</p>
+    </div>
+</section>
+
+<section class="section split-feature reverse">
+    <div>
+        <p class="eyebrow">Resort &amp; Bar</p>
+        <h2>Bar &amp; Beverages</h2>
+        <p>Our bar offers alcoholic and non-alcoholic beverages served responsibly in a calm and welcoming environment.</p>
+    </div>
+    <img src="{% static 'images/bar-counter-wide.jpg' %}" alt="Bar counter and beverage area at The Hive" loading="lazy">
+</section>
+
+<section class="split-section">
+    <div>
+        <p class="eyebrow">Inquiry</p>
+        <h2>Planning a visit?</h2>
+        <p>Send us an inquiry and our team will get back to you with the information you need.</p>
+        <div class="cta-contact-links">
+            <a href="{% url 'contact' %}#inquiry">Send an inquiry</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}The Hive Resort &amp; Bar{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}The Hive Resort &amp; Bar in Belgut, Sosiot offers guest spaces, dining, bar and beverage service, events, and relaxed hospitality along Sosiot-Kapsoit Road.{% endblock %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="brand logo-brand">
+                <img src="{% static 'images/hive-logo.jpg.jpeg' %}" alt="The Hive logo" onerror="this.hidden=true">
+                <span>The Hive</span>
+            </a>
+            <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="sr-only">Menu</span>
+            </button>
+            <ul class="nav-links" id="site-navigation">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'restaurant_bar' %}">Restaurant &amp; Bar</a></li>
+                <li><a href="{% url 'events' %}">Events</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a class="nav-button" href="{% url 'contact' %}#inquiry">Make an Inquiry</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div>
+            <strong>The Hive Resort &amp; Bar</strong>
+            <p>Guest spaces, dining, beverages, events, and relaxed outdoor hospitality.</p>
+            <p>Belgut, Sosiot, along Sosiot-Kapsoit Road</p>
+        </div>
+        <div>
+            <p>Open daily</p>
+            <p>Email: <a href="mailto:kiplangatsambai1997@gmail.com">kiplangatsambai1997@gmail.com</a></p>
+            <p>Phone: <a href="tel:+254700770702">+254 700 770 702</a></p>
+            <p>Location: Belgut, Sosiot, along Sosiot-Kapsoit Road</p>
+        </div>
+    </footer>
+    <button class="back-to-top" type="button" aria-label="Back to top">Top</button>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

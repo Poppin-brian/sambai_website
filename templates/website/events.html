@@ -1,0 +1,39 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Events | The Hive{% endblock %}
+{% block meta_description %}Host meetings, celebrations, welfare group gatherings, and private events at The Hive in a welcoming hospitality setting.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <p class="eyebrow">Events</p>
+    <h1>Meetings, celebrations, group meals, and private gatherings.</h1>
+</section>
+
+<section class="section split-feature">
+    <div>
+        <h2>Host a focused, comfortable gathering.</h2>
+        <p>Host meetings, celebrations, chama gatherings, welfare group meetings, and private events in a welcoming environment.</p>
+        <p>Meals, beverages, outdoor space, and event support can be arranged by inquiry.</p>
+        <a class="button primary" href="{% url 'contact' %}#inquiry">Plan an Event</a>
+    </div>
+    <img src="{% static 'images/hive-outdoor-compound.jpg' %}" alt="Outdoor compound at The Hive" loading="lazy">
+</section>
+
+<section class="section">
+    <div class="feature-grid">
+        <article class="feature-card">
+            <h3>Birthdays</h3>
+            <p>A relaxed setting for family, friends, food, and refreshments.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Meetings</h3>
+            <p>Simple support for small team sessions, community groups, and planning meetings.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Private gatherings</h3>
+            <p>Comfortable spaces for group meals, celebrations, and social occasions.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}

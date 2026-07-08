@@ -1,0 +1,97 @@
+{% extends "website/base.html" %}
+
+{% block title %}Contact | The Hive{% endblock %}
+{% block meta_description %}Contact The Hive in Belgut, Sosiot for guest spaces, dining, bar and beverage service, events, directions, and general inquiries.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>Make an inquiry for a visit, meal, stay, or event.</h1>
+</section>
+
+<section class="section contact-layout" id="inquiry">
+    <div class="contact-details">
+        <h2>Get in touch</h2>
+        <p>Send your details and our team will respond. For faster help, call or WhatsApp us directly.</p>
+        <div class="contact-card-list">
+            <article class="contact-card">
+                <h3>Phone</h3>
+                <a href="tel:+254700770702">+254 700 770 702</a>
+            </article>
+            <article class="contact-card">
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/254700770702" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            </article>
+            <article class="contact-card">
+                <h3>Email</h3>
+                <a href="mailto:kiplangatsambai1997@gmail.com">kiplangatsambai1997@gmail.com</a>
+            </article>
+            <article class="contact-card">
+                <h3>Location</h3>
+                <p>Belgut, Sosiot, along Sosiot-Kapsoit Road</p>
+            </article>
+        </div>
+    </div>
+
+    <form class="inquiry-form" method="post">
+        {% csrf_token %}
+
+        {% if messages %}
+            <div class="form-messages" aria-live="polite">
+                {% for message in messages %}
+                    <div class="form-message is-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            <div class="form-message is-error">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        {% for field in form %}
+            <div class="form-field">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p class="field-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button class="button primary" type="submit">Send Inquiry</button>
+    </form>
+</section>
+
+<section class="location-section">
+    <div class="section-heading">
+        <p class="eyebrow">Location</p>
+        <h2>Find Us</h2>
+        <p><strong>Address:</strong> Belgut, Sosiot, along Sosiot-Kapsoit Road</p>
+        <p>Visit The Hive for dining, guest spaces, events, and relaxed hospitality.</p>
+    </div>
+
+    <div class="map-card">
+        <div class="map-wrapper">
+            <iframe
+                title="Map showing The Hive near Belgut, Sosiot"
+                src="https://www.google.com/maps?q=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road&output=embed"
+                width="100%"
+                height="350"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div class="map-card-footer">
+            <p>Open the map for turn-by-turn directions to Belgut, Sosiot.</p>
+            <a class="button primary directions-btn" href="https://www.google.com/maps/search/?api=1&query=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road" target="_blank" rel="noopener noreferrer">Get Directions</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}The Hive | Resort &amp; Bar{% endblock %}
+{% block meta_description %}The Hive Resort &amp; Bar in Belgut, Sosiot offers guest spaces, dining, bar and beverage service, events, and relaxed hospitality along Sosiot-Kapsoit Road.{% endblock %}
+
+{% block content %}
+<section class="hero hero-slideshow" aria-label="The Hive outdoor photos">
+    <div class="hero-slide" style="background-image: url('{% static 'images/hive-outdoor-veranda.jpg' %}');"></div>
+    <div class="hero-slide" style="background-image: url('{% static 'images/hive-garden-view.jpg' %}');"></div>
+    <div class="hero-slide" style="background-image: url('{% static 'images/hive-outdoor-compound.jpg' %}');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="eyebrow">Belgut, Sosiot</p>
+        <h1>The Hive</h1>
+        <p class="hero-kicker">Resort &amp; Bar</p>
+        <p class="hero-slogan">Relax. Dine. Stay. Celebrate.</p>
+        <p class="hero-description">A welcoming destination for dining, guest stays, events, and relaxed outdoor moments in Belgut, Sosiot.</p>
+        <div class="hero-actions">
+            <a class="button primary" href="{% url 'contact' %}#inquiry">Make an Inquiry</a>
+            <a class="button secondary" href="{% url 'gallery' %}">View Gallery</a>
+            <a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road" target="_blank" rel="noopener noreferrer">Get Directions</a>
+        </div>
+    </div>
+    <div class="hero-dots" aria-label="Hero slideshow controls"></div>
+</section>
+
+<section class="section intro-section centered-section">
+    <div class="section-heading">
+        <p class="eyebrow">Welcome</p>
+        <h2>Warm hospitality in a calm outdoor setting.</h2>
+    </div>
+    <p>The Hive brings together comfortable guest spaces, freshly prepared meals, refreshing drinks, and warm hospitality in a calm outdoor setting.</p>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <p class="eyebrow">Services</p>
+        <h2>Everything guests need, clearly arranged.</h2>
+    </div>
+    <div class="feature-grid service-grid">
+        <article class="feature-card">
+            <h3>Guest Spaces</h3>
+            <p>Comfortable spaces for stays, visits, and guest arrangements by inquiry.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Restaurant</h3>
+            <p>Freshly prepared meals in a relaxed setting for individuals, families, and groups.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Bar &amp; Beverages</h3>
+            <p>Refreshing beverages served in a calm, welcoming bar area.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Events &amp; Gatherings</h3>
+            <p>Simple support for meetings, celebrations, group meals, and private events.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Outdoor Relaxation</h3>
+            <p>Open-air spaces for quiet conversations, social moments, and unhurried visits.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section split-feature">
+    <div>
+        <p class="eyebrow">Restaurant and Bar</p>
+        <h2>Meals and relaxed social moments.</h2>
+        <p>Enjoy freshly prepared meals, refreshing beverages, and a calm setting for dining, meeting friends, or unwinding after the day.</p>
+        <a class="button primary" href="{% url 'restaurant_bar' %}">Explore Restaurant &amp; Bar</a>
+    </div>
+    <img src="{% static 'images/hive-outdoor-veranda.jpg' %}" alt="Outdoor sitting area at The Hive" loading="lazy">
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <p class="eyebrow">Facilities</p>
+        <h2>Simple amenities for relaxed visits.</h2>
+    </div>
+    <div class="feature-grid feature-grid-four">
+        <article class="feature-card">
+            <h3>Outdoor compound</h3>
+            <p>Open outdoor space for relaxing, social visits, and group moments.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Garden feel</h3>
+            <p>A calm environment for conversation, meals, and unwinding.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Event support</h3>
+            <p>Support for birthdays, meetings, celebrations, and private gatherings.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Easy directions</h3>
+            <p>Find us along Sosiot-Kapsoit Road in Belgut, Sosiot.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section split-feature reverse">
+    <div>
+        <p class="eyebrow">Meetings and Events</p>
+        <h2>Gather with ease.</h2>
+        <p>Host meetings, celebrations, chama gatherings, welfare group meetings, and private events in a welcoming environment.</p>
+        <a class="button primary" href="{% url 'events' %}">Plan an Event</a>
+    </div>
+    <img src="{% static 'images/hive-outdoor-compound.jpg' %}" alt="Outdoor compound at The Hive" loading="lazy">
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <p class="eyebrow">Gallery Preview</p>
+        <h2>See the setting.</h2>
+    </div>
+    <div class="gallery-grid preview-grid">
+        <a class="gallery-card" href="{% url 'gallery' %}">
+            <img src="{% static 'images/hive-outdoor-veranda.jpg' %}" alt="Outdoor sitting area at The Hive" loading="lazy">
+            <span>Outdoor Sitting Area</span>
+        </a>
+        <a class="gallery-card" href="{% url 'gallery' %}">
+            <img src="{% static 'images/hive-garden-view.jpg' %}" alt="Garden view at The Hive" loading="lazy">
+            <span>Garden View</span>
+        </a>
+        <a class="gallery-card" href="{% url 'gallery' %}">
+            <img src="{% static 'images/hive-outdoor-compound.jpg' %}" alt="Outdoor compound at The Hive" loading="lazy">
+            <span>Outdoor Compound</span>
+        </a>
+    </div>
+    <div class="section-actions">
+        <a class="button primary" href="{% url 'gallery' %}">View Full Gallery</a>
+    </div>
+</section>
+
+<section class="split-section">
+    <div>
+        <p class="eyebrow">Visit The Hive</p>
+        <h2>Planning a visit to The Hive?</h2>
+        <p>Find us along Sosiot-Kapsoit Road or contact our team for dining, guest spaces, events, and general inquiries.</p>
+    </div>
+    <div class="cta-actions">
+        <a class="button primary" href="https://www.google.com/maps/search/?api=1&query=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road" target="_blank" rel="noopener noreferrer">Get Directions</a>
+        <a class="button secondary" href="{% url 'contact' %}">Contact Us</a>
+    </div>
+</section>
+
+<section class="location-section">
+    <div class="section-heading">
+        <p class="eyebrow">Location</p>
+        <h2>Find us in Belgut, Sosiot.</h2>
+        <p>The Hive is located along Sosiot-Kapsoit Road.</p>
+    </div>
+    <div class="map-card">
+        <div class="map-wrapper">
+            <iframe
+                title="Map showing The Hive near Belgut, Sosiot"
+                src="https://www.google.com/maps?q=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road&output=embed"
+                width="100%"
+                height="350"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div class="map-card-footer">
+            <p>Belgut, Sosiot, along Sosiot-Kapsoit Road</p>
+            <a class="button primary directions-btn" href="https://www.google.com/maps/search/?api=1&query=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road" target="_blank" rel="noopener noreferrer">Get Directions</a>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
