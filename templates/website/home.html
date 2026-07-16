@@ -3,6 +3,7 @@
 
 {% block title %}The Hive | Resort &amp; Bar{% endblock %}
 {% block meta_description %}The Hive Resort &amp; Bar in Belgut, Sosiot offers guest spaces, dining, bar and beverage service, events, and relaxed hospitality along Sosiot-Kapsoit Road.{% endblock %}
+{% block body_class %}homepage{% endblock %}
 
 {% block content %}
 <section class="hero hero-slideshow" aria-label="The Hive outdoor photos">
@@ -11,7 +12,6 @@
     <div class="hero-slide" style="background-image: url('{% static 'images/hive-outdoor-compound.jpg' %}');"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <p class="eyebrow">Belgut, Sosiot</p>
         <h1>The Hive</h1>
         <p class="hero-kicker">Resort &amp; Bar</p>
         <p class="hero-slogan">Relax. Dine. Stay. Celebrate.</p>
@@ -33,7 +33,7 @@
     <p>The Hive brings together comfortable guest spaces, freshly prepared meals, refreshing drinks, and warm hospitality in a calm outdoor setting.</p>
 </section>
 
-<section class="section">
+<section class="section" id="guest-spaces">
     <div class="section-heading">
         <p class="eyebrow">Services</p>
         <h2>Everything guests need, clearly arranged.</h2>

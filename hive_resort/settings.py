@@ -106,4 +106,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get("HIVE_EMAIL_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("HIVE_EMAIL_PASSWORD", "")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-HIVE_INQUIRY_EMAIL = "kiplangatsambai1997@gmail.com"
+HIVE_INQUIRY_EMAIL = "hiveresort@gmail.com"

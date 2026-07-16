@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navToggle = document.querySelector(".nav-toggle");
     const navLinks = document.querySelector(".nav-links");
+    const siteHeader = document.querySelector(".site-header");
     const backToTop = document.querySelector(".back-to-top");
     const lightbox = document.querySelector(".lightbox");
     const lightboxImage = document.querySelector(".lightbox-image");
     const lightboxCaption = document.querySelector(".lightbox-caption");
     const lightboxClose = document.querySelector(".lightbox-close");
+    const headerScrollOffset = 60;
 
     function closeNav() {
         if (!navToggle || !navLinks) {
@@ -48,11 +50,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    if (backToTop) {
-        window.addEventListener("scroll", () => {
-            backToTop.classList.toggle("is-visible", window.scrollY > 420);
-        });
+    function updateHeaderState() {
+        if (!siteHeader) {
+            return;
+        }
 
+        siteHeader.classList.toggle("is-scrolled", window.scrollY > headerScrollOffset);
+    }
+
+    function updateScrollState() {
+        updateHeaderState();
+
+        if (backToTop) {
+            backToTop.classList.toggle("is-visible", window.scrollY > 420);
+        }
+    }
+
+    if (siteHeader || backToTop) {
+        updateScrollState();
+        window.addEventListener("scroll", updateScrollState, { passive: true });
+    }
+
+    if (backToTop) {
         backToTop.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         });

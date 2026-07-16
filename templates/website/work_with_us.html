@@ -1,0 +1,115 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Work With Us | The Hive Resort &amp; Bar{% endblock %}
+{% block meta_description %}Explore opportunities to work with The Hive and submit your details for future hospitality roles.{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background: linear-gradient(135deg, rgba(10, 77, 73, 0.95), rgba(24, 33, 31, 0.92)); color: #ffffff;">
+    <div class="section-heading" style="max-width: 760px;">
+        <p class="eyebrow">JOIN OUR TEAM</p>
+        <h1>Work With Us</h1>
+        <p style="margin-top: 14px; color: rgba(255,255,255,0.9); font-size: 1.12rem;">Join a hospitality team committed to warm service, professionalism and memorable guest experiences.</p>
+    </div>
+</section>
+
+<section class="section intro-section">
+    <div class="section-heading">
+        <h2>We welcome dependable, respectful and service-oriented people.</h2>
+        <p>The Hive values dependable, respectful and service-oriented people who can help create calm, welcoming experiences for every guest. We are always interested in meeting candidates whose approach reflects professionalism and care.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <p class="eyebrow">Opportunities</p>
+        <h2>Areas of interest</h2>
+    </div>
+    <div class="feature-grid service-grid">
+        <article class="feature-card">
+            <h3>Hospitality and guest service</h3>
+            <p>Support guest arrivals, visits and memorable service.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Restaurant service</h3>
+            <p>Assist with dining, table service and guest care.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Kitchen support</h3>
+            <p>Help maintain clean, organised and efficient service.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Housekeeping and maintenance</h3>
+            <p>Keep spaces welcoming, safe and well-presented.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Events support</h3>
+            <p>Contribute to planning, setup and guest experience.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Security and general operations</h3>
+            <p>Help maintain smooth daily operations and guest comfort.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <p class="eyebrow">Applications</p>
+        <h2>Submit your details for future opportunities</h2>
+        <p>We do not have any advertised openings at the moment, but you may submit your details for consideration when a suitable opportunity becomes available.</p>
+    </div>
+    <div class="contact-layout">
+        <div class="contact-details">
+            <h3>Why join The Hive?</h3>
+            <p>We look for people who bring reliability, professionalism and warmth to every interaction. A thoughtful application helps us understand your experience and how you may contribute to our team.</p>
+            <div class="contact-card-list">
+                <article class="contact-card">
+                    <h3>Professional environment</h3>
+                    <p>Work in a team that values calm service and hospitality.</p>
+                </article>
+                <article class="contact-card">
+                    <h3>Guest-focused service</h3>
+                    <p>Contribute to memorable guest experiences every day.</p>
+                </article>
+            </div>
+        </div>
+
+        <form class="inquiry-form" method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {{ form.honey }}
+
+            {% if messages %}
+                <div class="form-messages" aria-live="polite">
+                    {% for message in messages %}
+                        <div class="form-message is-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if form.non_field_errors %}
+                <div class="form-message is-error">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                {% if field.name != 'honey' %}
+                    <div class="form-field">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <small>{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <button class="button primary" type="submit">Submit Application</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

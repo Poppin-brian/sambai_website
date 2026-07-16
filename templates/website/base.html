@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
     <header class="site-header">
         <nav class="navbar">
             <a href="{% url 'home' %}" class="brand logo-brand">
@@ -30,6 +30,15 @@
                 <li><a href="{% url 'restaurant_bar' %}">Restaurant &amp; Bar</a></li>
                 <li><a href="{% url 'events' %}">Events</a></li>
                 <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li class="nav-item-with-status">
+                    {% if has_current_vacancies %}
+                        <a href="{% url 'work_with_us' %}">Work With Us</a>
+                    {% else %}
+                        <span class="nav-link-disabled" aria-disabled="true" tabindex="-1" aria-label="Work With Us, no current vacancies">
+                            Work With Us
+                        </span>
+                    {% endif %}
+                </li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
                 <li><a class="nav-button" href="{% url 'contact' %}#inquiry">Make an Inquiry</a></li>
             </ul>
@@ -40,20 +49,7 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="site-footer">
-        <div>
-            <strong>The Hive Resort &amp; Bar</strong>
-            <p>Guest spaces, dining, beverages, events, and relaxed outdoor hospitality.</p>
-            <p>Belgut, Sosiot, along Sosiot-Kapsoit Road</p>
-        </div>
-        <div>
-            <p>Open daily</p>
-            <p>Email: <a href="mailto:kiplangatsambai1997@gmail.com">kiplangatsambai1997@gmail.com</a></p>
-            <p>Phone: <a href="tel:+254700770702">+254 700 770 702</a></p>
-            <p>Location: Belgut, Sosiot, along Sosiot-Kapsoit Road</p>
-        </div>
-    </footer>
-    <button class="back-to-top" type="button" aria-label="Back to top">Top</button>
+    {% include "website/partials/footer.html" %}
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

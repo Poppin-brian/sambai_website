@@ -5,27 +5,108 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .forms import InquiryForm
+from .forms import InquiryForm, RecruitmentApplicationForm
+from .models import RecruitmentApplication
+
+HAS_CURRENT_VACANCIES = False
 
 
 def home(request):
-    return render(request, "website/home.html")
+    return render(
+        request,
+        "website/home.html",
+        {"has_current_vacancies": HAS_CURRENT_VACANCIES},
+    )
 
 
 def about(request):
-    return render(request, "website/about.html")
+    return render(
+        request, "website/about.html", {"has_current_vacancies": HAS_CURRENT_VACANCIES}
+    )
 
 
 def restaurant_bar(request):
-    return render(request, "website/restaurant_bar.html")
+    return render(
+        request,
+        "website/restaurant_bar.html",
+        {"has_current_vacancies": HAS_CURRENT_VACANCIES},
+    )
 
 
 def events(request):
-    return render(request, "website/events.html")
+    return render(
+        request, "website/events.html", {"has_current_vacancies": HAS_CURRENT_VACANCIES}
+    )
 
 
 def gallery(request):
-    return render(request, "website/gallery.html")
+    return render(
+        request,
+        "website/gallery.html",
+        {"has_current_vacancies": HAS_CURRENT_VACANCIES},
+    )
+
+
+def work_with_us(request):
+    if request.method == "POST":
+        form = RecruitmentApplicationForm(request.POST, request.FILES)
+        if form.is_valid():
+            application = form.save(commit=False)
+            application.status = "New"
+            application.save()
+
+            body_lines = [
+                f"Full name: {application.full_name}",
+                f"Phone number: {application.phone}",
+                f"Email: {application.email}",
+                f"Area of interest: {application.area_of_interest}",
+                f"Position applied for: {application.position_applied_for or 'Not provided'}",
+                f"Relevant experience: {application.experience}",
+                "",
+                "Personal statement:",
+                application.personal_statement,
+                "",
+                "Website: The Hive Resort & Bar",
+                "Submission time: {application.submitted_at}",
+            ]
+
+            if application.cv:
+                body_lines.append(f"CV file: {application.cv.name}")
+
+            if settings.EMAIL_HOST_USER and settings.HIVE_INQUIRY_EMAIL:
+                try:
+                    EmailMessage(
+                        subject="New recruitment application from The Hive website",
+                        body="\n".join(body_lines),
+                        from_email=settings.DEFAULT_FROM_EMAIL
+                        or settings.EMAIL_HOST_USER,
+                        to=[settings.HIVE_INQUIRY_EMAIL],
+                        reply_to=[application.email],
+                    ).send(fail_silently=False)
+                except Exception as error:
+                    print(f"Failed to send recruitment email: {error}")
+
+            messages.success(
+                request,
+                "Thank you for your interest. We have received your application and will be in touch if a suitable opportunity becomes available.",
+            )
+            return HttpResponseRedirect(reverse("work_with_us"))
+
+        messages.error(request, "Please check the highlighted fields and try again.")
+        form = RecruitmentApplicationForm(request.POST, request.FILES)
+    else:
+        form = RecruitmentApplicationForm()
+
+    applications = RecruitmentApplication.objects.order_by("-submitted_at")[:3]
+    return render(
+        request,
+        "website/work_with_us.html",
+        {
+            "form": form,
+            "applications": applications,
+            "has_current_vacancies": HAS_CURRENT_VACANCIES,
+        },
+    )
 
 
 def contact(request):
@@ -90,8 +171,14 @@ def contact(request):
                 )
                 return HttpResponseRedirect(f"{reverse('contact')}#inquiry")
         else:
-            messages.error(request, "Please check the highlighted fields and try again.")
+            messages.error(
+                request, "Please check the highlighted fields and try again."
+            )
     else:
         form = InquiryForm()
 
-    return render(request, "website/contact.html", {"form": form})
+    return render(
+        request,
+        "website/contact.html",
+        {"form": form, "has_current_vacancies": HAS_CURRENT_VACANCIES},
+    )

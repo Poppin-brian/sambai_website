@@ -1,4 +1,5 @@
 {% extends "website/base.html" %}
+{% load static %}
 
 {% block title %}About | The Hive{% endblock %}
 {% block meta_description %}The Hive is a warm hospitality destination in Belgut, Sosiot, offering guest spaces, dining, events, and relaxed outdoor moments.{% endblock %}
@@ -11,5 +12,8 @@
 
 <section class="section content-section">
     <p>The Hive brings together guest spaces, freshly prepared meals, beverages, event support, and outdoor relaxation in one convenient destination along Sosiot-Kapsoit Road.</p>
+    <div class="about-logo">
+        <img src="{% static 'images/hive-logo.jpg.jpeg' %}" alt="The Hive logo" loading="lazy">
+    </div>
 </section>
 {% endblock %}

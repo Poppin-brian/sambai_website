@@ -1,0 +1,73 @@
+{% load static %}
+
+<footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <section class="footer-column" aria-labelledby="footer-contact">
+                <h2 id="footer-contact">Contact</h2>
+                <ul class="footer-contact-list">
+                    <li>
+                        <span>Address</span>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road" target="_blank" rel="noopener noreferrer">Belgut, Sosiot, along Sosiot-Kapsoit Road</a>
+                    </li>
+                    <li>
+                        <span>Phone</span>
+                        <a href="tel:+254700770702">+254 700 770 702</a>
+                    </li>
+                    <li>
+                        <span>Email</span>
+                        <a href="mailto:hiveresort@gmail.com">hiveresort@gmail.com</a>
+                    </li>
+                </ul>
+            </section>
+
+            <nav class="footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'home' %}#guest-spaces">Guest Spaces</a></li>
+                    <li><a href="{% url 'restaurant_bar' %}">Restaurant &amp; Bar</a></li>
+                    <li><a href="{% url 'events' %}">Events &amp; Gatherings</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer-column" aria-labelledby="footer-visit">
+                <h2 id="footer-visit">Visit &amp; Support</h2>
+                <ul class="footer-links">
+                    <li><a href="{% url 'contact' %}#inquiry">Make an Inquiry</a></li>
+                    <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Belgut%2C%20Sosiot%2C%20Sosiot-Kapsoit%20Road" target="_blank" rel="noopener noreferrer">Get Directions</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    <li><a href="{% url 'contact' %}#inquiry">Safety Information</a></li>
+                    <li><span>Open Daily</span></li>
+                </ul>
+            </nav>
+
+            <section class="footer-brand" aria-label="The Hive brand">
+                <img src="{% static 'images/hive-logo.jpg.jpeg' %}" alt="The Hive logo" loading="lazy" onerror="this.hidden=true">
+                <div>
+                    <p class="footer-brand-name">THE HIVE</p>
+                    <p class="footer-brand-kicker">RESORT &amp; BAR</p>
+                    <p class="footer-tagline">Warm hospitality, calm spaces, memorable moments.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Hive Resort &amp; Bar. All Rights Reserved.</p>
+            <nav class="footer-bottom-links" aria-label="Footer secondary">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'home' %}#guest-spaces">Guest Spaces</a>
+                <a href="{% url 'restaurant_bar' %}">Restaurant &amp; Bar</a>
+                <a href="{% url 'events' %}">Events</a>
+                <a href="{% url 'contact' %}">Contact</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<div class="floating-actions" aria-label="Quick actions">
+    <a class="floating-whatsapp" href="https://wa.me/254700770702" target="_blank" rel="noopener noreferrer" aria-label="Contact The Hive on WhatsApp">WhatsApp</a>
+    <button class="back-to-top" type="button" aria-label="Back to top">Top</button>
+</div>
